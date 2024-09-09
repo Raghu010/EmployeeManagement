@@ -1,0 +1,41 @@
+﻿@model HomeDetailsViewModel
+
+@{
+    //Layout = "_Layout2";
+    ViewBag.Title = "Employee Details";
+    var photoPath = "~/Image/" + (Model.Employee.PhotoPath ?? "noimage.jpg");
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Employee.Name</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@photoPath" asp-append-version="true"/>
+
+                <h4>Employee ID: @Model.Employee.Id</h4>
+                <h4>Email: @Model.Employee.Email</h4>
+                <h4>Department: @Model.Employee.Department</h4>
+            </div>
+
+            <div class="card-footer text-center">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back</a> @*Note: Here we are using TagHelper.*@
+                @*<a href="#" class="btn btn-primary">Back</a>*@
+                <a asp-action="edit" asp-controller="home" asp-route-id="@Model.Employee.Id" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-primary">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script src="~/js/CustomScript.js"></script> @*Note: Here we are defining *@
+}
+
+@*Note: Here the model belongs to EmployeeManagement.ViewModel directive imagine if the same namespace to be used in other html files
+as well, so to avoid that include the namespace in _ViewImports.cshtml.*@
+@*Note: It is easiser to generate links without using taghelpers then why should we use them? This will be discussed in next session.*@

@@ -1,0 +1,10 @@
+﻿@* @{
+    @if (User.IsInRole("Admin"))
+    {
+        Layout = "_AdminLayout"; //If user logged in is Admin then use this Layout file else use the Layout file specified in NonAdminLayout.
+    }
+    //else
+    // {
+    //     Layout = "_NonAdminLayout";
+    // }
+} *@
